@@ -1,8 +1,21 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import './styles.css';
+import 'primeflex/primeflex.css';
+import 'primeicons/primeicons.css';
+import './index.module.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+const SampCv = ({ Component, pageProps }: AppProps) => {
+  return (
+    <>
+      <Head>
+        <title>Sergio Andrés Martínez CV</title>
+      </Head>
+      <main className="app">
+        <Component {...pageProps} />
+      </main>
+    </>
+  );
 }
 
-export default MyApp
+export default SampCv;
