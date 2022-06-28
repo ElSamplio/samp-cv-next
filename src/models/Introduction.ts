@@ -3,7 +3,7 @@ export type Introduction = {
     headLine: string
     title: string
     linkButtons: ButtonsConfig[]
-    personalData: PersonalData
+    personalData: PersonalData | undefined
 }
 
 export type ButtonsConfig = {

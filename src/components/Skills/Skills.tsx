@@ -11,7 +11,7 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
             <div className="text-700 text-sm mb-6">There are my main skills and abilites aquired across my career.</div>
             <div className="grid">
                 {
-                    skills.map((skill, index) =>
+                    skills?.map((skill, index) =>
                         <div key={index} className="col-12 md:col-4 mb-4 px-5">
                             <span className="p-3 shadow-2 mb-3 inline-block surface-card" style={{ borderRadius: 10 }}>
                                 <i className={`${skill.icon} text-4xl text-blue-500`}></i>

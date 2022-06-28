@@ -30,7 +30,7 @@ const useFetchData = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  return [introduction, skills, loading];
+  return [introduction, skills, loading] as const;
 };
 
 export default useFetchData;

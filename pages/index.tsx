@@ -8,6 +8,7 @@ import {
 } from '../src/components/Header'
 import { Skills } from '@Components/Skills'
 import { ProfileData } from '@Components/ProfileData'
+import { Introduction } from '@Models/Introduction'
 
 const Index: React.FC = () => {
   const [
@@ -26,7 +27,7 @@ const Index: React.FC = () => {
             <HeaderIntroduction introduction={introduction} />
             <HeaderImage />
           </div>
-          <ProfileData personalData={introduction.personalData}/>
+          <ProfileData personalData={introduction?.personalData}/>
           <Skills skills={skills} />
         </div>
     }
