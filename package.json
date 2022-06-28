@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "module-alias": "^2.2.2",
     "next": "12.1.6",
     "primeflex": "^3.2.0",
     "primeicons": "^5.0.0",
