@@ -414,6 +414,20 @@ summary svg {
   }
 }
 
+@media screen and (min-width: 767px) {
+  .imageMobile{
+    display: none !important;
+  }
+}
+
+.imageMobile{
+  border-radius: 150px;
+  margin-top: 10px;
+  text-align: center;
+  width: 50%;
+  margin-left: 20%;
+}
+
 .topMainImage {
   margin-left: 25%;
   margin-top: 25px;

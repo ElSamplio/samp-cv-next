@@ -4,7 +4,8 @@ import 'primereact/resources/themes/arya-orange/theme.css'
 import useFetchData from '../src/customHooks/useFetchData'
 import {
   HeaderImage,
-  HeaderIntroduction
+  HeaderIntroduction,
+  HeaderImageMobile
 } from '../src/components/Header'
 import { Skills } from '@Components/Skills'
 import { ProfileData } from '@Components/ProfileData'
@@ -25,10 +26,11 @@ const Index: React.FC = () => {
         :
         <div>
           <div className='grid grid-nogutter surface-0 text-800'>
+            <HeaderImageMobile />
             <HeaderIntroduction introduction={introduction} />
             <HeaderImage />
           </div>
-          <ProfileData personalData={introduction?.personalData}/>
+          <ProfileData personalData={introduction?.personalData} />
           <Skills skills={skills} />
           <Projects projects={projects} />
         </div>
