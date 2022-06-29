@@ -36,7 +36,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                                 <div className="flex align-items-center flex-wrap">
                                     {
                                         project.technologies.map((tech, index) => (
-                                            <div key={index} style={{ width: 100 }}>
+                                            <div key={index} style={{ width: 120 }}>
                                                 <Chip label={tech.name} className="mr-2" icon={() => <Icon iconName={tech.icon} />} />
                                             </div>
                                         ))
