@@ -22,5 +22,5 @@ Most of the content is fetched from an API, which fetchs data from a [MongoDB](h
 
 ## Deployed on Vercel
 
-Following NextJS documentation, I founf that the easiest way to deploy my Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Following NextJS documentation, I found that the easiest way to deploy my Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
