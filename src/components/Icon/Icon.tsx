@@ -24,6 +24,7 @@ import {
     SiAmazondynamodb,
     SiAmazonaws,
     SiGraphql,
+    SiFirebase,
 } from 'react-icons/si'
 import {
     AiOutlineConsoleSql
@@ -54,6 +55,7 @@ const Icon: React.FC<IconProps> = ({ props, iconName }) => {
         case 'aws': return <SiAmazonaws {...props} />        
         case 'docker': return <FaDocker {...props} />
         case 'graphql': return <SiGraphql {...props} />
+        case 'firebase': return <SiFirebase {...props} />
         default:
             return <FaUserAlt {...props} />
     }

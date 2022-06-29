@@ -1,9 +1,9 @@
 import { Skill } from "./Skill";
-import { Framework } from "./Framework";
 import { Introduction } from "./Introduction";
+import { Project } from "./Project";
 
 export type {
     Skill,
-    Framework,
-    Introduction
+    Introduction, 
+    Project,
 }

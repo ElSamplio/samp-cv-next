@@ -8,12 +8,13 @@ import {
 } from '../src/components/Header'
 import { Skills } from '@Components/Skills'
 import { ProfileData } from '@Components/ProfileData'
-import { Introduction } from '@Models/Introduction'
+import { Projects } from '@Components/Projects'
 
 const Index: React.FC = () => {
   const [
     introduction,
     skills,
+    projects,
     loading,
   ] = useFetchData()
 
@@ -29,6 +30,7 @@ const Index: React.FC = () => {
           </div>
           <ProfileData personalData={introduction?.personalData}/>
           <Skills skills={skills} />
+          <Projects projects={projects} />
         </div>
     }
   </>

@@ -1,11 +1,11 @@
 export type Project = {
+    company: string
     name: string
     abstract: string
     role: string
     responsibilities: string
-    imageUrl: string
     startDate: Date
-    endDate: Date
+    endDate: Date | string
     technologies: Technology[]
 }
 
