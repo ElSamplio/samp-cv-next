@@ -3,7 +3,7 @@ import axios from "axios";
 import { Skill } from "@Models/Skill";
 import { Project } from "../models/Project";
 import { Introduction } from "@Models/Introduction";
-const baseUrl = process.env.API_URL || "https://samp-cv-nest.herokuapp.com";
+const baseUrl = process.env.API_URL || "https://samp-cv-api-nest-ebsnfnownq-ue.a.run.app";
 
 const useFetchData = () => {
   const [loading, setLoading] = useState<boolean>(true);
