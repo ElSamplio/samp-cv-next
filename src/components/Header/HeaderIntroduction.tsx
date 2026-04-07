@@ -1,34 +1,51 @@
-import { Button } from 'primereact/button'
 import React from 'react'
 import { HeaderIntroductionProps } from './HeaderProps'
 
-const HeaderIntroduction: React.FC<HeaderIntroductionProps> = ({ introduction }) => {
-    return <>
-        {
-            introduction &&
-            <div className='col-12 md:col-6 p-6 text-center md:text-left flex align-items-center '>
-                <section id='titleBlock'>
-                    <span className='block text-6xl font-bold mb-1'>{introduction.name}</span>
-                    <div className='text-6xl text-primary font-bold mb-3'>Fullstack NodeJS | React developer</div>
-                    <p className='mt-0 mb-4 text-700 line-height-3'>{introduction.headLine}</p>
-                    <div className='card'>
-                        <div className="flex flex-wrap-reverse md:flex-wrap card-container purple-container" style={{ maxWidth: 500 }}>
-                            {
-                                introduction.linkButtons?.map((button, index) =>
-                                    <div key={index}
-                                        className="flex align-items-center justify-content-center"
-                                        style={{ minWidth: 200, minHeight: 50 }}>
-                                        <Button icon={button.icon} label={button.label} type='button' className='mr-3 p-button-raised'
-                                            onClick={() => window.open(button.href, '_blank')} style={{ minWidth: 200 }} />
-                                    </div>)
-                            }
-                        </div>
-                    </div>
-                </section>
-            </div>
-        }
+const BADGES = ['React', 'Node.js', 'TypeScript', 'AWS']
 
+const HeaderIntroduction: React.FC<HeaderIntroductionProps> = ({ introduction }) => {
+  return (
+    <>
+      {introduction && (
+        <div className="col-12 md:col-6 flex align-items-center cv-hero">
+          <div className="cv-hero__inner w-full">
+            <div className="cv-hero__badges">
+              {BADGES.map((label, i) => (
+                <span
+                  key={label}
+                  className={i % 2 === 0 ? 'cv-badge' : 'cv-badge cv-badge--alt'}
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
+            <section className="text-center md:text-left">
+              <h1 className="cv-hero__name font-display">{introduction.name}</h1>
+              <p className="cv-hero__title font-display cv-gradient-text">{introduction.title}</p>
+              <p className="cv-hero__headline">{introduction.headLine}</p>
+              <div className="cv-hero__actions">
+                {introduction.linkButtons?.map((button, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className={
+                      index === 0
+                        ? 'cv-link-btn cv-link-btn--primary'
+                        : 'cv-link-btn'
+                    }
+                    onClick={() => window.open(button.href, '_blank')}
+                  >
+                    <i className={button.icon} aria-hidden />
+                    <span>{button.label}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      )}
     </>
+  )
 }
 
 export default HeaderIntroduction

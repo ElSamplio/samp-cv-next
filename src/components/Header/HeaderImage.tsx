@@ -4,17 +4,18 @@ import Image from "next/image";
 
 const HeaderImage: React.FC = () => {
   return (
-    <>
-      <div className="col-12 md:col-6 rightMainImage">
+    <div className="col-12 md:col-6 cv-hero-photo rightMainImage p-0 md:py-2">
+      <div className="cv-hero-photo__frame">
         <Image
           src="/SAMP_Profile.jpg"
-          style={{ clipPath: "polygon(15% 0, 100% 0%, 100% 100%, 0 100%)" }}
           alt="Sergio Andrés Martínez"
-          height={640} width={640}
-          className='md:ml-auto block md:h-full'
+          height={640}
+          width={640}
+          className="md:ml-auto block w-full h-auto max-h-full object-cover"
+          priority
         />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -5,62 +5,66 @@ import moment from "moment";
 import { Icon } from "@Components/Icon";
 
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
-    return <>
-
-        <div className="surface-0">
-            <div className="font-medium text-3xl text-900 mb-3 text-center text-yellow-500">Projects Summary</div>
-            <div className="text-500 mb-5">These are the projects in which I have participated.</div>
-            {
-                projects?.map((project, index) => (
-                    <div key={index}>
-                        <div className="font-medium text-xl text-900 mb-3 text-center text-yellow-500">{project.name}</div>
-                        <ul className="list-none p-0 m-0">
-                            <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
-                                <div className="text-500 w-6 md:w-2 font-medium">Company</div>
-                                <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{project.company}</div>
-                            </li>
-                            <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
-                                <div className="text-500 w-6 md:w-2 font-medium">Abstract</div>
-                                <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{project.abstract}</div>
-                            </li>
-                            <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
-                                <div className="text-500 w-6 md:w-2 font-medium">Role</div>
-                                <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{project.role}</div>
-                            </li>
-                            <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
-                                <div className="text-500 w-6 md:w-2 font-medium">Responsibilities</div>
-                                <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{project.responsibilities}</div>
-                            </li>
-                            <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
-                                <div className="text-500 w-6 md:w-2 font-medium">Technologies</div>
-                                <div className="flex align-items-center flex-wrap">
-                                    {
-                                        project.technologies.map((tech, index) => (
-                                            <div key={index} style={{ width: 120 }}>
-                                                <Chip label={tech.name} className="mr-2" icon={() => <Icon iconName={tech.icon} />} />
-                                            </div>
-                                        ))
-                                    }
+    return (
+        <div className="cv-section surface-0">
+            <div className="cv-section__head">
+                <span className="cv-section__label">Portfolio</span>
+                <h2 className="cv-section__title font-display">Projects</h2>
+                <p className="cv-section__sub">
+                    Selected work and products I have contributed to.
+                </p>
+            </div>
+            <div className="cv-projects-wrap">
+                {
+                    projects?.map((project, index) => (
+                        <article key={index} className="cv-project-card">
+                            <div className="cv-project-card__header">
+                                <h3 className="cv-project-card__name font-display">{project.name}</h3>
+                                <span className="cv-project-card__dates">
+                                    {moment(project.startDate).format('MMM YYYY')}
+                                    {' — '}
+                                    {project.endDate ? moment(project.endDate).format('MMM YYYY') : 'Present'}
+                                </span>
+                            </div>
+                            <div className="cv-project-meta">
+                                <div className="cv-project-meta__row">
+                                    <span className="meta-label">Company</span>
+                                    <span className="meta-value">{project.company}</span>
                                 </div>
-                            </li>
-                            <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
-                                <div className="text-500 w-6 md:w-2 font-medium">Start Date</div>
-                                <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{moment(project.startDate).format('MMMM YYYY')}</div>
-                            </li>
-                            <li className="flex align-items-center py-3 px-2 border-top-1 border-300 flex-wrap">
-                                <div className="text-500 w-6 md:w-2 font-medium">End Date</div>
-                                <div className="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">{project.endDate ? moment(project.endDate).format('MMMM YYYY') : 'Present'}</div>
-                            </li>
-                        </ul>
-                        <hr className="mb-3 mx-0 border-top-1 border-none surface-border" />
-                        <hr className="mb-3 mx-0 border-top-1 border-none surface-border" />
-                    </div>
-                ))
-            }
-
+                                <div className="cv-project-meta__row">
+                                    <span className="meta-label">Abstract</span>
+                                    <span className="meta-value">{project.abstract}</span>
+                                </div>
+                                <div className="cv-project-meta__row">
+                                    <span className="meta-label">Role</span>
+                                    <span className="meta-value">{project.role}</span>
+                                </div>
+                                <div className="cv-project-meta__row">
+                                    <span className="meta-label">Responsibilities</span>
+                                    <span className="meta-value">{project.responsibilities}</span>
+                                </div>
+                                <div className="cv-project-meta__row">
+                                    <span className="meta-label">Technologies</span>
+                                    <div className="cv-tech-row meta-value">
+                                        {
+                                            project.technologies.map((tech, techIndex) => (
+                                                <Chip
+                                                    key={techIndex}
+                                                    label={tech.name}
+                                                    className="cv-chip mr-2 mb-2"
+                                                    icon={() => <Icon iconName={tech.icon} />}
+                                                />
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
         </div>
-
-    </>
+    )
 }
 
 export default Projects

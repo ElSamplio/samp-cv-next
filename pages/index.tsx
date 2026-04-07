@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
-import 'primereact/resources/themes/arya-orange/theme.css'
 import useFetchData from '../src/customHooks/useFetchData'
 import {
   HeaderImage,
@@ -11,6 +10,23 @@ import { Skills } from '@Components/Skills'
 import { ProfileData } from '@Components/ProfileData'
 import { Projects } from '@Components/Projects'
 
+const PageSkeleton: React.FC = () => (
+  <div className="cv-page">
+    <div className="cv-layout cv-skeleton">
+      <div className="cv-skeleton__hero">
+        <div>
+          <div className="cv-skel cv-skel-line cv-skel-line--lg" style={{ maxWidth: '80%' }} />
+          <div className="cv-skel cv-skel-line" style={{ maxWidth: '60%' }} />
+          <div className="cv-skel cv-skel-line cv-skel-line--sm" />
+          <div className="cv-skel cv-skel-line" style={{ marginTop: '1.5rem' }} />
+          <div className="cv-skel cv-skel-line" style={{ maxWidth: '90%' }} />
+        </div>
+        <div className="cv-skel cv-skel-block" />
+      </div>
+    </div>
+  </div>
+)
+
 const Index: React.FC = () => {
   const [
     introduction,
@@ -19,23 +35,26 @@ const Index: React.FC = () => {
     loading,
   ] = useFetchData()
 
-  return <>
-    {
-      loading ?
-        <i className="pi pi-spin pi-spinner" style={{ fontSize: '3em' }}></i>
-        :
-        <div>
-          <div className='grid grid-nogutter surface-0 text-800'>
-            <HeaderImageMobile />
-            <HeaderIntroduction introduction={introduction} />
-            <HeaderImage />
+  return (
+    <>
+      {loading ? (
+        <PageSkeleton />
+      ) : (
+        <div className="cv-page">
+          <div className="cv-layout">
+            <div className="grid grid-nogutter">
+              <HeaderImageMobile />
+              <HeaderIntroduction introduction={introduction} />
+              <HeaderImage />
+            </div>
+            <ProfileData personalData={introduction?.personalData} />
+            <Skills skills={skills} />
+            <Projects projects={projects} />
           </div>
-          <ProfileData personalData={introduction?.personalData} />
-          <Skills skills={skills} />
-          <Projects projects={projects} />
         </div>
-    }
-  </>
+      )}
+    </>
+  )
 }
 
 export default Index
