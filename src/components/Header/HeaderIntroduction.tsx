@@ -23,6 +23,28 @@ const HeaderIntroduction: React.FC<HeaderIntroductionProps> = ({ introduction })
               <h1 className="cv-hero__name font-display">{introduction.name}</h1>
               <p className="cv-hero__title font-display cv-gradient-text">{introduction.title}</p>
               <p className="cv-hero__headline">{introduction.headLine}</p>
+              {introduction.personalData && (
+                <div className="cv-hero__contact">
+                  {introduction.personalData.mobilePhone?.value && (
+                    <div className="cv-hero__contact-item">
+                      <i
+                        className={introduction.personalData.mobilePhone.icon}
+                        aria-hidden
+                      />
+                      <span>{introduction.personalData.mobilePhone.value}</span>
+                    </div>
+                  )}
+                  {introduction.personalData.email?.value && (
+                    <div className="cv-hero__contact-item">
+                      <i
+                        className={introduction.personalData.email.icon}
+                        aria-hidden
+                      />
+                      <span>{introduction.personalData.email.value}</span>
+                    </div>
+                  )}
+                </div>
+              )}
               <div className="cv-hero__actions">
                 {introduction.linkButtons?.map((button, index) => (
                   <button

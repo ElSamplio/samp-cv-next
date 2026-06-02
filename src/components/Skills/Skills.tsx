@@ -8,7 +8,6 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
     return (
         <div className="cv-section surface-section">
             <div className="cv-section__head">
-                <span className="cv-section__label">Expertise</span>
                 <h2 className="cv-section__title font-display">Skills &amp; stack</h2>
                 <p className="cv-section__sub">
                     Core technologies and depth of experience across my career.
