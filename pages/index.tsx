@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import useFetchData from '../src/customHooks/useFetchData'
 import {
   HeaderImage,
@@ -8,6 +8,11 @@ import {
 } from '../src/components/Header'
 import { Skills } from '@Components/Skills'
 import { Projects } from '@Components/Projects'
+import { CvSearch } from '@Components/CvSearch'
+import {
+  countSearchMatches,
+  normalizeSearchQuery,
+} from '@utils/cvSearch'
 
 const PageSkeleton: React.FC = () => (
   <div className="cv-page">
@@ -34,6 +39,43 @@ const Index: React.FC = () => {
     loading,
   ] = useFetchData()
 
+  const [searchQuery, setSearchQuery] = useState('')
+  const [skillsOpen, setSkillsOpen] = useState(false)
+  const [projectsOpen, setProjectsOpen] = useState(false)
+
+  const normalizedQuery = normalizeSearchQuery(searchQuery)
+  const hasSearch = normalizedQuery.length > 0
+
+  const matchCount = useMemo(
+    () => countSearchMatches(skills, projects, normalizedQuery),
+    [skills, projects, normalizedQuery],
+  )
+
+  useEffect(() => {
+    if (!hasSearch) {
+      setSkillsOpen(false)
+      setProjectsOpen(false)
+      return
+    }
+
+    if (matchCount.skills > 0) setSkillsOpen(true)
+    if (matchCount.projects > 0) setProjectsOpen(true)
+  }, [hasSearch, matchCount.projects, matchCount.skills])
+
+  useEffect(() => {
+    if (!hasSearch || matchCount.skills + matchCount.projects === 0) return
+
+    const targetId =
+      matchCount.skills > 0 ? 'cv-section-skills' : 'cv-section-projects'
+
+    window.requestAnimationFrame(() => {
+      document.getElementById(targetId)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      })
+    })
+  }, [hasSearch, matchCount.projects, matchCount.skills, normalizedQuery])
+
   return (
     <>
       {loading ? (
@@ -46,8 +88,25 @@ const Index: React.FC = () => {
               <HeaderIntroduction introduction={introduction} />
               <HeaderImage />
             </div>
-            <Skills skills={skills} />
-            <Projects projects={projects} />
+
+            <CvSearch
+              query={searchQuery}
+              onQueryChange={setSearchQuery}
+              matchCount={matchCount}
+            />
+
+            <Skills
+              skills={skills}
+              searchQuery={searchQuery}
+              open={skillsOpen}
+              onOpenChange={setSkillsOpen}
+            />
+            <Projects
+              projects={projects}
+              searchQuery={searchQuery}
+              open={projectsOpen}
+              onOpenChange={setProjectsOpen}
+            />
           </div>
         </div>
       )}

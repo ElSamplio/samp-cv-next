@@ -1,5 +1,8 @@
-import { Project } from "@Models/Project"
+import { Project } from '@Models/Project'
 
 export type ProjectsProps = {
-    projects: Project[]
+  projects: Project[]
+  searchQuery?: string
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
 }

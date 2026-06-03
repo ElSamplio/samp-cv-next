@@ -9,8 +9,8 @@ const HeaderImage: React.FC = () => {
         <Image
           src="/SAMP_Profile.jpg"
           alt="Sergio Andrés Martínez"
-          height={640}
-          width={640}
+          height={480}
+          width={480}
           className="md:ml-auto block w-full h-auto max-h-full object-cover"
           priority
         />

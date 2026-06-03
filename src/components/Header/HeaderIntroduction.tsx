@@ -45,6 +45,9 @@ const HeaderIntroduction: React.FC<HeaderIntroductionProps> = ({ introduction })
                   )}
                 </div>
               )}
+              <p className="cv-hero__hint">
+                Search by keyword below to jump to relevant skills and projects.
+              </p>
               <div className="cv-hero__actions">
                 {introduction.linkButtons?.map((button, index) => (
                   <button
