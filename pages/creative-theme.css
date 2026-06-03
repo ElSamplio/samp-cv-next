@@ -510,6 +510,16 @@
   line-height: 1.55;
 }
 
+.cv-project-meta__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.cv-project-meta__list li + li {
+  margin-top: 0.35rem;
+}
+
 .cv-tech-row {
   display: flex;
   flex-wrap: wrap;

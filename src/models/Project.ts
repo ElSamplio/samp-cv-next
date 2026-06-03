@@ -3,7 +3,7 @@ export type Project = {
     name: string
     abstract: string
     role: string
-    responsibilities: string
+    responsibilities: string[]
     startDate: Date
     endDate: Date | string
     technologies: Technology[]

@@ -40,8 +40,13 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
                                     <span className="meta-value">{project.role}</span>
                                 </div>
                                 <div className="cv-project-meta__row">
-                                    <span className="meta-label">Responsibilities</span>
-                                    <span className="meta-value">{project.responsibilities}</span>
+                                    <span className="meta-label">Key Achievements</span>
+                                    <ul className="meta-value cv-project-meta__list">
+                                        {(project.responsibilities && project.responsibilities instanceof Array) ? 
+                                        project.responsibilities.map((item, itemIndex) => (
+                                            <li key={itemIndex}>{item}</li>
+                                        )) : <li>project.responsibilities</li>}
+                                    </ul>
                                 </div>
                                 <div className="cv-project-meta__row">
                                     <span className="meta-label">Technologies</span>
